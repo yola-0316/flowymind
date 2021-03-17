@@ -6,7 +6,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:dev": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "echo 'Todo'",
+    "lint:fix": "echo 'Todo'"
   },
   "dependencies": {
     "hast-util-to-dom": "^2.0.6",
@@ -19,6 +22,8 @@
     "web-vitals": "^1.1.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
@@ -26,6 +31,7 @@
     "@types/node": "^12.20.6",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
+    "husky": "^5.1.3",
     "react-scripts": "4.0.3",
     "typescript": "^4.2.3"
   },
@@ -33,6 +39,11 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   },
   "browserslist": {
