@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Layer, Stage } from "react-konva";
 import { useAsync } from "../hooks/useAsync";
-import { mdListToDom, eachNode, transformNodeWithLayout } from "../shared";
+import { mdListToDom, eachNode, transformNodeWithLayout } from "@/shared";
 import Tree from "./Tree";
 import Controls from "./Controls/Controls";
 import Scaler from "./Controls/Scaler";
