@@ -1,8 +1,10 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Layer, Stage } from "react-konva";
 import { useAsync } from "../hooks/useAsync";
 import { mdListToDom, eachNode, transformNodeWithLayout } from "../shared";
 import Tree from "./Tree";
+import Controls from "./Controls/Controls";
+import Scaler from "./Controls/Scaler";
 
 function convertToTree() {
   return fetch("/skill.md")
@@ -16,9 +18,14 @@ function MindNode() {
     value,
   ]);
 
+  const [scale, setScale] = useState(1);
+
   return (
     <Stage width={window.innerWidth} height={window.innerHeight}>
-      <Layer>
+      <Controls>
+        <Scaler onChange={(scale) => setScale(scale / 100)} />
+      </Controls>
+      <Layer scale={{ x: scale, y: scale }} draggable>
         {(() => {
           if (nodes && nodes.length) {
             return <Tree tree={nodes[0]} />;

@@ -1,5 +1,5 @@
-let width = window.innerWidth;
-let height = window.innerHeight;
+// let width = window.innerWidth;
+// let height = window.innerHeight;
 
 type RawNode = {
   name: string;

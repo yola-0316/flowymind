@@ -11,18 +11,23 @@ const Node = (props: NodeProps) => {
   const padding = 5;
   const fontSize = 16;
 
+  const attr = useMemo(() => ({ x, y }), [x, y]);
+
   const txtRef = useRef(null);
   const [txtHeight, setTxtHeight] = useState(0);
-  const [txtWidth] = useState(() => fontSize * `${name}`.length + padding * 2);
-
-  const attr = useMemo(() => ({ x, y, width: txtWidth }), [x, y, txtWidth]);
-  const rectAttr = useMemo(() => ({ height: txtHeight }), [txtHeight]);
+  const [txtWidth, setTextWidth] = useState(0);
+  const rectAttr = useMemo(() => ({ width: txtWidth, height: txtHeight }), [
+    txtWidth,
+    txtHeight,
+  ]);
   const txtAttr = useMemo(() => ({}), []);
 
   useEffect(() => {
     if (txtRef.current) {
-      console.log((txtRef.current as any).height());
+      // console.log((txtRef.current as any).height());
+      // console.log((txtRef.current as any).width());
       setTxtHeight((txtRef.current as any).height());
+      setTextWidth((txtRef.current as any).width());
     }
   }, []);
 
@@ -37,8 +42,6 @@ const Node = (props: NodeProps) => {
       <Rect
         {...attr}
         {...rectAttr}
-        offsetX={txtWidth / 2}
-        offsetY={txtHeight / 2}
         width={txtWidth}
         height={txtHeight}
         stroke="#555"
@@ -50,13 +53,9 @@ const Node = (props: NodeProps) => {
         ref={txtRef}
         {...attr}
         {...txtAttr}
-        offsetX={txtWidth / 2}
-        offsetY={txtHeight / 2}
-        width={txtWidth}
         padding={padding}
         fontSize={fontSize}
         fill="#555"
-        align="center"
         text={name}
       />
     </Group>

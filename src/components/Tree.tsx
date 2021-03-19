@@ -29,8 +29,8 @@ const Tree = (props: TreeProps) => {
             <Line
               ref={(e) => (linesRef.current[i] = e)}
               points={[
-                node.x,
-                node.y,
+                node.x + 10,
+                node.y + 10,
                 child.x,
                 node.y,
                 node.x,
